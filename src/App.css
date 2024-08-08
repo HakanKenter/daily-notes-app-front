@@ -36,3 +36,132 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  max-width: 600px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  height: 100px;
+}
+
+
+.note-card {
+  background-color: #f7f9fc; /* Couleur de fond douce pour la carte */
+  border-radius: 8px; /* Bords arrondis */
+  padding: 20px; /* Espacement interne */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour le relief */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation subtile */
+}
+
+.note-card:hover {
+  transform: translateY(-5px); /* Effet de levée au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre renforcée au survol */
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1.2rem;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  background: #3e3c3c;
+  color: white;
+}
+
+textarea {
+  height: 100px;
+}
+
+button {
+  width: 100%; /* Assurer que les boutons sont bien visibles */
+}
+
+button + button {
+  margin-top: 10px; /* Espacement entre les boutons */
+}
+
+/* Styles généraux pour tous les écrans */
+.container {
+  max-width: 100%;
+  padding: 15px;
+}
+
+.note-card {
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.2rem; /* Taille de police ajustée */
+}
+
+.card-text {
+  font-size: 1rem; /* Taille de police ajustée */
+}
+
+textarea {
+  height: 80px;
+}
+
+button {
+  width: 100%;
+}
+
+button + button {
+  margin-top: 8px;
+}
+
+/* Media queries pour les petits écrans */
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+
+  .card-title {
+      font-size: 1rem; /* Taille de police plus petite pour les petits écrans */
+  }
+
+  .card-text {
+      font-size: 0.9rem; /* Taille de police plus petite pour les petits écrans */
+  }
+
+  textarea {
+      height: 60px; /* Réduction de la hauteur du textarea */
+  }
+
+  .note-card {
+      padding: 10px; /* Réduction du padding pour optimiser l'espace */
+      margin-bottom: 10px; /* Espacement réduit en bas de la carte */
+  }
+
+  h1 {
+      font-size: 1.5rem; /* Réduction de la taille du titre principal */
+  }
+
+  h5 {
+      font-size: 1rem; /* Réduction de la taille des sous-titres */
+  }
+
+  .row {
+      margin-bottom: 10px; /* Réduction de l'espacement entre les sections */
+  }
+}
