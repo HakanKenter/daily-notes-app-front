@@ -12,10 +12,27 @@ function App() {
     const [note, setNote] = useState('');
     const [existingNote, setExistingNote] = useState('');
 
+    const API_URL = 'https://daily-notes-app-back.onrender.com/';
+
+    const getLocalDateString = (date) => {
+      const localDate = new Date(date);
+      localDate.setHours(0, 0, 0, 0);
+    
+      const formatter = new Intl.DateTimeFormat('fr-FR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
+    
+      const [{ value: day }, , { value: month }, , { value: year }] = formatter.formatToParts(localDate);
+    
+      return `${year}-${month}-${day}`;
+    };
+
     const fetchNoteForDate = async (date) => {
         const formattedDate = date.toISOString().split('T')[0];
         try {
-            const response = await axios.get(`http://localhost:5000/api/notes/${formattedDate}`);
+            const response = await axios.get(`${API_URL}api/notes/${formattedDate}`);
             setExistingNote(response.data?.content || '');
         } catch (err) {
             console.error(err);
@@ -29,7 +46,7 @@ function App() {
     const handleSaveNote = async () => {
         const formattedDate = selectedDate.toISOString().split('T')[0];
         try {
-            await axios.post('http://localhost:5000/api/notes', { date: formattedDate, content: note });
+            await axios.post(`${API_URL}api/notes`, { date: formattedDate, content: note });
             fetchNoteForDate(selectedDate);
             setNote('');
         } catch (err) {
@@ -40,7 +57,7 @@ function App() {
     const handleDeleteNote = async () => {
         const formattedDate = selectedDate.toISOString().split('T')[0];
         try {
-            await axios.delete(`http://localhost:5000/api/notes/${formattedDate}`);
+            await axios.delete(`${API_URL}api/notes/${formattedDate}`);
             setExistingNote('');
             setNote('');
         } catch (err) {
@@ -72,7 +89,8 @@ function App() {
                 <div className="col-md-8">
                     <div className="note-card card shadow-sm">
                         <div className="card-body">
-                            <h5 className="card-title text-primary">Note pour {selectedDate.toISOString().split('T')[0]}</h5>
+                            {/* <h5 className="card-title text-primary">Note pour {selectedDate.toISOString().split('T')[0]}</h5> */}
+                            <h5 className="card-title text-primary">Note pour {getLocalDateString(selectedDate)}</h5>
                             {existingNote ? (
                                 <>
                                     <p className="card-text fs-5">{existingNote}</p>
